@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio de sesión - Instituto Tecnológico De Tlaxiaco</title>
+  <style>
+    /* ======== Estilos globales ======== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f4f8; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      display: flex;
+      width: 90%;
+      max-width: 1200px;
+      height: 85vh;
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+      transition: 0.3s ease;
+    }
+
+    /* ======== Panel izquierdo ======== */
+    .left-panel {
+      flex: 1;
+      background: linear-gradient(180deg, #8b5cf6, #5b21b6);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .left-panel img.logo {
+      width: 140px;
+      margin-bottom: 0.5rem; /* antes era 1.2rem */
+    }
+
+    .left-panel h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.8rem;
+      margin-top: -0.3rem; /* lo sube ligeramente */
+      letter-spacing: 1px;
+    }
+
+    .left-panel img.persona {
+      width: 230px; /* antes 190px */
+      margin: 1.2rem 0;
+      transition: transform 0.3s ease;
+    }
+
+    .left-panel img.persona:hover {
+      transform: scale(1.05);
+    }
+
+    .left-panel .quote {
+      font-size: 0.9rem;
+      max-width: 320px;
+      line-height: 1.4;
+      margin-top: 1rem;
+      font-style: italic;
+    }
+
+    .left-panel small {
+      margin-top: 1.5rem;
+      font-size: 0.75rem;
+      opacity: 0.8;
+    }
+
+    /* ======== Panel derecho ======== */
+    .right-panel {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 3rem 2rem;
+    }
+
+    .right-panel img.logo-tec {
+      width: 110px;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 1rem;
+      color: #333;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      letter-spacing: 0.5px;
+    }
+
+    .tab-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.8rem;
+      gap: 0.4rem;
+    }
+
+    .tab {
+      padding: 8px 18px;
+      border-radius: 6px;
+      background: #f1f1f1;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+    }
+
+    .tab.active {
+      background: #5b21b6;
+      color: white;
+      font-weight: 600;
+    }
+
+    form {
+      width: 100%;
+      max-width: 360px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    input {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      border-color: #5b21b6;
+      box-shadow: 0 0 6px rgba(91, 33, 182, 0.25);
+    }
+
+    button {
+      background: #5b21b6;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #4c1d95;
+    }
+
+    /* ======== Responsividad ======== */
+    @media (max-width: 900px) {
+      .container {
+        flex-direction: column;
+        height: auto;
+      }
+
+      .left-panel img.persona {
+        width: 580px;
+      }
+
+      .right-panel img.logo-tec {
+        width: 90px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Panel izquierdo -->
+    <div class="left-panel">
+      <img src="logo.png" alt="Logo MindBox" class="logo">
+      <h1>MindBox</h1>
+
+      <img src="docente-Photoroom.png" alt="Estudiante" class="persona">
+
+      <p class="quote">"La educación es el arma más poderosa que puedes usar para cambiar el mundo" - Nelson Mandela</p>
+      <small>MindBox®. Todos los derechos reservados 2025.</small>
+    </div>
+
+    <!-- Panel derecho -->
+    <div class="right-panel">
+      <img src="logotectlaxiaco.png" alt="Logo Instituto Tecnológico de Tlaxiaco" class="logo-tec">
+      <h2>INSTITUTO TECNOLÓGICO DE TLAXIACO</h2>
+
+      <div class="tab-container">
+        <div class="tab active">Estudiantes</div>
+        <div class="tab">Personal</div>
+        <div class="tab">Aspirantes</div>
+      </div>
+
+      <form>
+        <input type="text" placeholder="Número de control">
+        <input type="password" placeholder="Contraseña">
+        <button type="submit">Iniciar sesión</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
